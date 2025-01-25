@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <h1>Welcome to Products Page</h1>
+        <table border= "1">
+            <tr>
+                <th>name</th>
+                <th>image</th>
+                <th>category</th>
+                <th>price</th>
+                <th>desc</th>
+            </tr>
+
+        <form method = 'POST'>
+            {% for i in allproducts %}
+            <tr>
+            <td>{{i.name}}</td>
+            <td><img src="{{i.image.url}}" alt="image not found" height=100 width=100/></td>
+            <td>{{i.category}}</td>
+            <td>{{i.price}}</td>
+            <td>{{i.desc}}</td>
+            {% endfor %}
+        </form>
+    </table>
+    </body>
+    </html>
