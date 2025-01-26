@@ -5,13 +5,13 @@
     <div class="row mt-3">
         <div class="col-lg-3">
             <div class='list-group border shadow'>
-                <a href="#" class="mb-3">
+                <a href="/" class="mb-3">
                     <button class="btn btn-outline-dark" style="width:10rem;">
                     All Products
                     </button>
                 </a>
                 {% for j in allcategories %}
-                <a href="#" class="mb-3">
+                <a href="/?category={{j.id}}" class="mb-3">
                     <button class="btn btn-outline-dark" style="width:10rem;">
                     {{j.name}}
                     </button>

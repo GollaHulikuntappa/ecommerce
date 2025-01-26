@@ -2,7 +2,7 @@
 <html>
     <head></head>
     <body>
-        <h1>Welcome to Products Page</h1>
+        {% comment %} <h1>Welcome to Products Page</h1>
         <table border= "1">
             <tr>
                 <th>name</th>
@@ -21,7 +21,14 @@
             <td>{{i.price}}</td>
             <td>{{i.desc}}</td>
             {% endfor %}
-        </form>
-    </table>
+        </form> {% endcomment %}
+    {% comment %} </table> {% endcomment %}
+    <h1> Create An Account</h1>
+                <table>
+                <form method="POST">
+                    {{allcustomers.as_p}}
+                    <input type='submit' value='submit' name='submit'/>
+                </form>
+            </table>
     </body>
     </html>
