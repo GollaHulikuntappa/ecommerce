@@ -1,9 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from shop.product import Product
 from shop.category import Category
 from shop.forms import CustomerModelForm
-from django.contrib.auth.hashers import make_password
+from django.contrib.auth.hashers import make_password,check_password
 from shop.customer import Customer
 
 # Create your views here.
@@ -75,3 +75,30 @@ def signup(request):
         else:
             msg={"error":error_msg,"value":uservalues}
             return render(request,'signup.html',msg)
+        
+        
+        
+def login(request):
+    if request.method == "GET":
+        return render(request,"login.html")
+    else:
+        email=request.POST['email']
+        password=request.POST["password"]
+        
+        # to check email found or not
+        users=Customer.getemail(email)
+        error_msg=None
+        if users:
+            # if email found check password
+            check=check_password(password,users.password)
+            if check:
+                return redirect("/")
+            else:
+                error_msg="Password is incorrect"
+                msg={'error':error_msg}
+                return render(request,'login.html',msg)
+            
+        else:
+            error_msg="Email is not found"
+            msg={'error':error_msg}
+            return render(request,'login.html',msg)

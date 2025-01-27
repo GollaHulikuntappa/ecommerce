@@ -12,3 +12,11 @@ class Customer(models.Model):
         if Customer.objects.filter(email=self.email):
             return True
         return False
+    
+    # to check email id is valid or not
+    @staticmethod
+    def getemail(email):
+        try:
+            return Customer.objects.get(email=email)
+        except:
+            return False
