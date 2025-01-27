@@ -6,3 +6,9 @@ class Customer(models.Model):
     email=models.EmailField(unique=True)
     mobile=models.CharField(max_length=10)
     password=models.CharField(max_length=1000)
+    
+    # check if email id is exist or not
+    def isexist(self):
+        if Customer.objects.filter(email=self.email):
+            return True
+        return False
